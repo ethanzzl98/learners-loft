@@ -1,5 +1,5 @@
 class Api::V1::LessonsController < Api::V1::BaseController
-  before_action :set_lesson, only [ :show, :update, :destroy ]
+  before_action :set_lesson, only: [ :show, :update, :destroy ]
 
   def index
     @lessons = Lesson.all

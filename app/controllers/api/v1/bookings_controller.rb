@@ -2,7 +2,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
   before_action :set_booking, only: [ :show, :update, :destroy ]
 
   def index
-    @bookings = Booking.where(user_id: @current_user.id)
+    @bookings = Booking.where(user_id: @current_user.id).order(:created_at => :desc)
     # @bookings_detail = @bookings.map { |booking| { lesson: booking.lesson, user: booking.user } }
     # render json: @bookings_detail
   end

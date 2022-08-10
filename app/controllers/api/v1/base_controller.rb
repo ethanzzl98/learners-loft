@@ -14,6 +14,7 @@ class Api::V1::BaseController < ActionController::Base
       user_id = data[:user_id]
       @current_user = User.find(user_id) # set current user by user_id in JWT payload
     else
+      puts "Missing JWT token"
       render json: { error: 'Missing JWT token.' }, status: 401
     end
   end
@@ -24,6 +25,8 @@ class Api::V1::BaseController < ActionController::Base
   end
 
   def get_jwt_token # retrieve token from headers
+    puts "The resquest is"
+    puts request.headers['X-USER-TOKEN']
     request.headers['X-USER-TOKEN']
   end
 
@@ -32,6 +35,7 @@ class Api::V1::BaseController < ActionController::Base
   end
 
   def internal_server_error(exception)
+    puts exception
     if Rails.env.development?
       response = { type: exception.class.to_s, error: exception.message }
     else

@@ -12,8 +12,11 @@ class Api::V1::LessonsController < Api::V1::BaseController
   def create
     @lesson = Lesson.new(lesson_params)
     if @lesson.save
+      puts "Save success"
       render :show, status: :created
     else
+      puts "Something went wrong\n"
+      puts @lesson.errors.full_messages
       render_error
     end
   end
@@ -27,8 +30,8 @@ class Api::V1::LessonsController < Api::V1::BaseController
   end
 
   def destroy
-      @lesson.destroy
-      head :no_content
+    @lesson.destroy
+    head :no_content
   end
 
   private

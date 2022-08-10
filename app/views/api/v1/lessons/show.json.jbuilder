@@ -1,3 +1,1 @@
-json.extract! @lesson, :subject, :title, :description
-json.start_time @lesson.start_time&.strftime("%e %b %Y, %H:%M")
-json.end_time @lesson.end_time&.strftime("%H:%M")
+json.partial! partial: 'api/v1/lessons/lesson', lesson: @lesson

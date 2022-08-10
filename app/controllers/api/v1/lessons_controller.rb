@@ -10,7 +10,9 @@ class Api::V1::LessonsController < Api::V1::BaseController
   end
 
   def create
+    puts "params: #{params}"
     @lesson = Lesson.new(lesson_params)
+    @lesson.errors.full_messages
     if @lesson.save
       puts "Save success"
       render :show, status: :created

@@ -2,15 +2,19 @@ class Api::V1::BookingsController < Api::V1::BaseController
   before_action :set_booking, only: [ :show, :update, :destroy ]
 
   def index
-    @bookings = Booking.all.filter { |booking| booking.user.id == params[:user_id] }
-    render json: @bookings
+    @bookings = Booking.where(user_id: @current_user.id)
+    # @bookings_detail = @bookings.map { |booking| { lesson: booking.lesson, user: booking.user } }
+    # render json: @bookings_detail
   end
 
   def show
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    # debugger
+    @booking = Booking.new
+    @booking.user = @current_user
+    @booking.lesson = Lesson.find(params[:lesson_id])
     puts @booking.errors.full_messages
     if @booking.save
       render :show, status: :created

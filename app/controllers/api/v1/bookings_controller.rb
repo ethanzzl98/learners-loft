@@ -1,7 +1,16 @@
 class Api::V1::BookingsController < Api::V1::BaseController
-  before_action :set_booking, only: [ :show, :update, :destroy]
+  before_action :set_booking, only: [ :create, :show, :update, :destroy]
 
   def show
+  end
+
+  def create
+    @booking = Booking.new(booking_params)
+    if @booking.save
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   def update

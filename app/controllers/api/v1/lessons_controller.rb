@@ -11,7 +11,6 @@ class Api::V1::LessonsController < Api::V1::BaseController
 
   def create
     @lesson = Lesson.new(lesson_params)
-    puts "Try to save lesson"
     if @lesson.save
       puts "Save success"
       render :show, status: :created

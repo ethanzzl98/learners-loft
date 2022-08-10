@@ -10,7 +10,7 @@ class Api::V1::LessonsController < Api::V1::BaseController
   end
 
   def create
-    @lesson = Lessons.new(lesson_params)
+    @lesson = Lesson.new(lesson_params)
     if @lesson.save
       render :show, status: :created
     else
@@ -38,7 +38,7 @@ class Api::V1::LessonsController < Api::V1::BaseController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:subject, :title, :description, :start_time, :end_time)
+    params.require(:lesson).permit(:subject, :title, :description, :start_time, :end_time, :user_id)
   end
 
   def render_error

@@ -1,1 +1,3 @@
-json.extract! @lesson, :subject, :title, :start_time, :end_time, :description, :start_date
+json.extract! @lesson, :subject, :title, :description
+json.start_time @lesson.start_time&.strftime("%e %b %Y, %H:%M")
+json.end_time @lesson.end_time&.strftime("%H:%M")

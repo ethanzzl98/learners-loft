@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'login', to: 'sessions#login', as: :login
       resources :lessons, only: [:index, :create, :show, :update, :destroy] do
-        resources :bookings, only: [:create, :show, :update]
+        resources :bookings, only: [:create]
       end
+      resources :bookings, only: [:index, :destroy, :show]
     end
   end
 end

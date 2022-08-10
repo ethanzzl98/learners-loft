@@ -1,1 +1,1 @@
-json.extract! @booking, :id, :name, :text
+json.extract! @lesson, :user_id, :subject, :title

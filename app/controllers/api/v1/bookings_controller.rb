@@ -1,6 +1,11 @@
 class Api::V1::BookingsController < Api::V1::BaseController
   before_action :set_booking, only: [ :show, :update, :destroy]
 
+  def index
+    @bookings = Booking.all.filter {|booking| booking.user.id == params[:user_id]}
+    render json: @bookings
+  end
+
   def show
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_08_070831) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_10_021952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,11 +28,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_070831) do
     t.string "subject"
     t.string "title"
     t.text "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "icon_url"
+    t.date "start_date"
+    t.time "start_time"
+    t.time "end_time"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 

@@ -3,16 +3,19 @@ class Api::V1::LessonsController < Api::V1::BaseController
 
   def index
     @lessons = Lesson.all
-    render json: @lessons #Just for testing
+    render json: @lessons
+  end
+
+  def mylessons
+    @lessons = Lesson.where(user_id: @current_user.id)
+    render json: @lessons
   end
 
   def show
   end
 
   def create
-    puts "params: #{params}"
     @lesson = Lesson.new(lesson_params)
-    @lesson.errors.full_messages
     if @lesson.save
       puts "Save success"
       render :show, status: :created

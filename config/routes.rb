@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       post 'login', to: 'sessions#login', as: :login
+      get 'lessons/mylessons', to: 'lessons#mylessons'
       resources :lessons, only: [:index, :create, :show, :update, :destroy] do
         resources :bookings, only: [:create]
       end
+
       resources :bookings, only: [:index, :destroy, :show]
     end
   end

@@ -3,7 +3,7 @@ class Api::V1::LessonsController < Api::V1::BaseController
 
   def index
     @lessons = Lesson.all
-    render json: @lessons
+    # render json: @lessons
   end
 
   def mylessons

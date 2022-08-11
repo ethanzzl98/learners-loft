@@ -46,7 +46,7 @@ class Api::V1::LessonsController < Api::V1::BaseController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:subject, :title, :description, :start_time, :end_time, :user_id, :icon_url)
+    params.require(:lesson).permit(:subject, :title, :description, :start_date, :start_time, :end_time, :user_id, :icon_url)
   end
 
   def render_error

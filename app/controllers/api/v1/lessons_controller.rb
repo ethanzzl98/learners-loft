@@ -8,7 +8,6 @@ class Api::V1::LessonsController < Api::V1::BaseController
 
   def mylessons
     @lessons = Lesson.where(user_id: @current_user.id)
-    render json: @lessons
   end
 
   def show
